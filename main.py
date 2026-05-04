@@ -34,6 +34,15 @@ def main():
                 except FileNotFoundError:
                     print(f"cd: {' '.join(args)}: No such file or directory")
                     
+        elif cmd=="mkdir":
+            if len(args)==0:
+                print("usage: mkdir [directory_name] ...")
+            else:
+                try:
+                    os.mkdir(' '.join(args))
+                except FileExistsError:
+                    print(f"mkdir: {' '.join(args)} File already exists")
+                    
         else:
             print(f"{cmd}: Command not found")
 
