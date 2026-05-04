@@ -43,7 +43,7 @@ def main():
                 except FileExistsError:
                     print(f"mkdir: {' '.join(args)} File already exists")
                     
-        elif cmd=="open":
+        elif cmd=="cat":
             if len(args) == 0:
                 #Manque le nom du fichier
                 print("missing file name")
@@ -54,7 +54,7 @@ def main():
                     #Récupére la taille du fichier
                     f_size = os.path.getsize(' '.join(args))
                     ret = os.read(fd, f_size)
-                    #Print l'intérieur du fichuer
+                    #Print l'intérieur du fichier
                     print(ret)
                     #Ferme le fichier
                     os.close(fd)
