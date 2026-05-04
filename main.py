@@ -43,6 +43,23 @@ def main():
                 except FileExistsError:
                     print(f"mkdir: {' '.join(args)} File already exists")
                     
+        elif cmd=="open":
+            if len(args) == 0:
+                #Manque le nom du fichier
+                print("missing file name")
+            else:
+                try:
+                    #Ouvre le fichier en qst
+                    fd = os.open(' '.join(args),  os.O_RDWR)
+                    #Récupére la taille du fichier
+                    f_size = os.path.getsize(' '.join(args))
+                    ret = os.read(fd, f_size)
+                    #Print l'intérieur du fichuer
+                    print(ret)
+                    #Ferme le fichier
+                    os.close(fd)
+                except FileNotFoundError:
+                        print(f"cd: {' '.join(args)}: No such file or directory")                
         else:
             print(f"{cmd}: Command not found")
 
