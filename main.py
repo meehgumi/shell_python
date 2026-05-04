@@ -22,8 +22,9 @@ def main():
         elif cmd == "pwd":
             print(os.getcwd())
         elif cmd =="ls":
-            for i in os.listdir():
-                print(' '.join(os.listdir()))
+            liste_ls = os.listdir()
+            for i in range(len(liste_ls)):
+                print(liste_ls[i])                
                 
         elif cmd== "cd":
             if len(args) == 0:
@@ -59,7 +60,10 @@ def main():
                     #Ferme le fichier
                     os.close(fd)
                 except FileNotFoundError:
-                        print(f"cd: {' '.join(args)}: No such file or directory")                
+                        print(f"cd: {' '.join(args)}: No such file or directory")           
+                        
+        elif cmd =="":
+            pass
         else:
             print(f"{cmd}: Command not found")
 
